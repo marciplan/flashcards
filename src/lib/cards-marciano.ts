@@ -62,8 +62,8 @@ export const marcianoCards: Flashcard[] = [
     hint: "Embeddings, candidate retrieval, ranking, audience overlap, personalisatie. Geen nieuwe magie.",
   },
   {
-    keyword: "Het verschil — drie dingen",
-    hint: "1) Optimaliseren op de relatie, niet op schermtijd. 2) Tegengewichten tegen populariteitsbias. 3) Open, transparant, Europees eigenaarschap.",
+    keyword: "Het verschil — twee dingen",
+    hint: "1) Tegengewichten tegen populariteitsbias. 2) Open, transparant, Europees eigenaarschap.",
   },
   {
     keyword: "Hóe we het bouwen",
@@ -75,7 +75,7 @@ export const marcianoCards: Flashcard[] = [
   },
   {
     keyword: "We beginnen niet bij nul",
-    hint: "Die directory hébben we al: onafhankelijke NL makers van Substack, Ghost, losse auteurs én kleine publicaties. Dag één draait op echte content en echte lezers.",
+    hint: "Die directory hébben we al: onafhankelijke NL makers van Substack, Ghost, losse auteurs én kleine publicaties.",
   },
   {
     keyword: "Stap 2 — de restack",
