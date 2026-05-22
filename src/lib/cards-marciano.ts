@@ -19,7 +19,7 @@ export const marcianoCards: Flashcard[] = [
   },
   {
     keyword: "Jairaj — Substack CTO",
-    hint: "\"Het gaat niet om goed of slecht, het gaat om de objective function.\" Welke variabele vind je het belangrijkst.",
+    hint: '"Het gaat niet om goed of slecht, het gaat om de objective function." Welke variabele vind je het belangrijkst.',
   },
   {
     keyword: "Hun eigen experiment",
@@ -31,7 +31,7 @@ export const marcianoCards: Flashcard[] = [
   },
   {
     keyword: "Zelfs mét de juiste prikkel gaat het mis",
-    hint: "Lees de comments onder Substacks eigen uitleg: honderden kleinere schrijvers zeggen \"m'n groei is stilgevallen\", \"de feed beloont grote namen\".",
+    hint: 'Lees de comments onder Substacks eigen uitleg: honderden kleinere schrijvers zeggen "m\'n groei is stilgevallen", "de feed beloont grote namen".',
   },
   {
     keyword: "Populariteit = centralisatie",
@@ -47,7 +47,7 @@ export const marcianoCards: Flashcard[] = [
   },
   {
     keyword: "Open en in Europese handen",
-    hint: "Infrastructuur bepaalt wie de macht heeft. Daar is nog geen goed antwoord op. Dat willen wij uitzoeken.",
+    hint: "Want infrastructuur bepaalt wie de macht heeft.",
   },
   {
     keyword: "Wat we bouwen",
@@ -59,7 +59,7 @@ export const marcianoCards: Flashcard[] = [
   },
   {
     keyword: "Grotendeels dezelfde machine als Substack",
-    hint: "Embeddings, candidate retrieval, ranking, audience overlap, personalisatie. Geen nieuwe magie.",
+    hint: "Embeddings, candidate retrieval, ranking, audience overlap, personalisatie. Vandaag de dag geen rocket science.",
   },
   {
     keyword: "Het verschil — twee dingen",
@@ -67,19 +67,15 @@ export const marcianoCards: Flashcard[] = [
   },
   {
     keyword: "Hóe we het bouwen",
-    hint: "Niet top-down te ontwerpen — een aanbevelingssysteem ontstaat uit gedrag. Stap voor stap, elke stap levert de data die de volgende nodig heeft.",
+    hint: "Een aanbevelingssysteem ontstaat uit gedrag. Dit gaan dus stap voor stap bouwen, waarbij elke stap de data levert die de volgende nodig heeft.",
   },
   {
     keyword: "Stap 1 — de directory",
-    hint: "Chronologisch, geen ranking. Substacks eigen bouwers zeggen dat dat prima werkt als start.",
+    hint: "Chronologisch, geen ranking. Substacks eigen bouwers zeggen dat dat prima werkt als start. Die directory hébben we al: onafhankelijke NL makers van Substack, Ghost, losse auteurs én kleine publicaties.",
   },
   {
-    keyword: "We beginnen niet bij nul",
-    hint: "Die directory hébben we al: onafhankelijke NL makers van Substack, Ghost, losse auteurs én kleine publicaties.",
-  },
-  {
-    keyword: "Stap 2 — de restack",
-    hint: "Gewoon een doorgeefknop. Doet twee dingen tegelijk: distributie (mijn lezers zien het) én signaal (dít is goed).",
+    keyword: "Stap 2 — de restack (of repost, retweet)",
+    hint: "Gewoon een doorgeefknop. Doet twee dingen tegelijk: het laat distributie zien (mijn lezers zien het) én signaal (dít vindt iemand goed).",
   },
   {
     keyword: "Onder water — een kaart",
@@ -87,11 +83,11 @@ export const marcianoCards: Flashcard[] = [
   },
   {
     keyword: "Stap 3 — voorzichtig ranken",
-    hint: "Eerst extreem simpel: likes + shares gedeeld door tijd sinds posten. Daarna een lichte personalisatie-slag.",
+    hint: "Eerst extreem simpel: likes + shares gedeeld door tijd sinds posten. Daarna gaan we testen met personalisatie",
   },
   {
-    keyword: "Stap 4 — modellen",
-    hint: "Niet op abonnementen (te zeldzaam op onze schaal). Op iets interessanters: komt een lezer terug bij dezelfde schrijver? Dát voorspelt een toekomstige abonnementsrelatie.",
+    keyword: "Stap 4 — modellen bouwen",
+    hint: "Niet gericht op abonnementen (dat is eigenlijk niet mogelijk op de schaal waarop wij testen). Wel iets interessanters: komt een lezer terug bij dezelfde schrijver? Dát voorspelt een toekomstige abonnementsrelatie.",
   },
   {
     keyword: "Werkt het? Who knows",
