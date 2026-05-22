@@ -10,6 +10,7 @@ const SWIPE_TIME_MAX = 600;
 export default function Home() {
   const [index, setIndex] = useState(0);
   const [drag, setDrag] = useState(0);
+  const [dragging, setDragging] = useState(false);
   const [transitioning, setTransitioning] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const touchStart = useRef<{ y: number; t: number } | null>(null);
@@ -54,6 +55,7 @@ export default function Home() {
     if (transitioning) return;
     const t = e.touches[0];
     touchStart.current = { y: t.clientY, t: performance.now() };
+    setDragging(true);
   };
 
   const onTouchMove = (e: React.TouchEvent) => {
@@ -72,6 +74,7 @@ export default function Home() {
     const elapsed = performance.now() - touchStart.current.t;
     const dy = drag;
     touchStart.current = null;
+    setDragging(false);
     if (Math.abs(dy) > SWIPE_THRESHOLD && elapsed < SWIPE_TIME_MAX * 2) {
       if (dy < 0) next();
       else prev();
@@ -81,7 +84,6 @@ export default function Home() {
   };
 
   const card = cards[index];
-  const progress = ((index + 1) / total) * 100;
 
   return (
     <main
@@ -124,7 +126,7 @@ export default function Home() {
           style={{
             transform: `translateY(${drag}px)`,
             opacity: 1 - Math.min(Math.abs(drag) / 400, 0.5),
-            transition: touchStart.current
+            transition: dragging
               ? "none"
               : "transform 200ms var(--ease-out-quart), opacity 200ms var(--ease-out-quart)",
           }}
