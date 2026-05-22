@@ -11,6 +11,7 @@ import {
 import { Button } from "@/components/ui/button";
 import type { Flashcard } from "@/lib/cards";
 
+
 type Props = {
   cards: Flashcard[];
   current: number;
