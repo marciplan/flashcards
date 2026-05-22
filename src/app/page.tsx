@@ -110,18 +110,23 @@ export default function Home() {
 
       <div className="h-[2px] w-full bg-white/10">
         <div
-          className="h-full bg-white transition-[width] duration-300 ease-out"
-          style={{ width: `${progress}%` }}
+          className="h-full w-full origin-left bg-white will-change-transform"
+          style={{
+            transform: `scaleX(${(index + 1) / total})`,
+            transition: "transform 240ms var(--ease-out-quart)",
+          }}
         />
       </div>
 
       <div className="relative flex flex-1 items-center justify-center overflow-hidden px-6">
         <div
-          className="flex w-full max-w-md flex-col items-center justify-center text-center"
+          className="flex w-full max-w-md flex-col items-center justify-center text-center will-change-transform"
           style={{
             transform: `translateY(${drag}px)`,
             opacity: 1 - Math.min(Math.abs(drag) / 400, 0.5),
-            transition: touchStart.current ? "none" : "transform 220ms ease-out, opacity 220ms ease-out",
+            transition: touchStart.current
+              ? "none"
+              : "transform 200ms var(--ease-out-quart), opacity 200ms var(--ease-out-quart)",
           }}
         >
           <h1 className="text-balance text-5xl font-bold leading-[1.05] tracking-tight text-white sm:text-6xl">
@@ -148,12 +153,12 @@ function SwipeHints({ atTop, atBottom }: { atTop: boolean; atBottom: boolean }) 
   return (
     <>
       {!atTop && (
-        <div className="pointer-events-none absolute top-4 left-1/2 -translate-x-1/2 text-muted-foreground/40">
+        <div className="pointer-events-none absolute top-4 left-1/2 -translate-x-1/2 text-white/25">
           <Chevron direction="up" />
         </div>
       )}
       {!atBottom && (
-        <div className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 text-muted-foreground/40">
+        <div className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 text-white/25">
           <Chevron direction="down" />
         </div>
       )}

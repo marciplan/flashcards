@@ -55,7 +55,7 @@ export function CardIndex({ cards, current, onJump, open, onOpenChange }: Props)
                   <button
                     ref={isActive ? activeRef : undefined}
                     onClick={() => onJump(i)}
-                    className={`flex w-full items-center gap-3 rounded-lg px-3 py-3 text-left text-base transition-colors ${
+                    className={`flex w-full items-center gap-3 rounded-lg px-3 py-3 text-left text-base transition-[background-color,color,transform] duration-150 ease-out active:scale-[0.98] ${
                       isActive
                         ? "bg-primary text-primary-foreground"
                         : "hover:bg-accent"
