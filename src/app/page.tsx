@@ -86,15 +86,15 @@ export default function Home() {
   return (
     <main
       ref={containerRef}
-      className="relative flex flex-1 flex-col bg-background text-foreground"
+      className="relative flex flex-1 flex-col bg-black text-white"
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
     >
       <header className="flex items-center justify-between px-4 pt-[max(0.75rem,env(safe-area-inset-top))] pb-2">
-        <span className="text-sm tabular-nums text-muted-foreground">
+        <span className="text-sm tabular-nums text-white/80">
           {String(index + 1).padStart(2, "0")}
-          <span className="text-muted-foreground/40"> / {String(total).padStart(2, "0")}</span>
+          <span className="text-white/40"> / {String(total).padStart(2, "0")}</span>
         </span>
         <CardIndex
           cards={cards}
@@ -108,9 +108,9 @@ export default function Home() {
         />
       </header>
 
-      <div className="h-[2px] w-full bg-muted">
+      <div className="h-[2px] w-full bg-white/10">
         <div
-          className="h-full bg-primary transition-[width] duration-300 ease-out"
+          className="h-full bg-white transition-[width] duration-300 ease-out"
           style={{ width: `${progress}%` }}
         />
       </div>
@@ -124,11 +124,11 @@ export default function Home() {
             transition: touchStart.current ? "none" : "transform 220ms ease-out, opacity 220ms ease-out",
           }}
         >
-          <h1 className="text-balance text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
+          <h1 className="text-balance text-5xl font-bold leading-[1.05] tracking-tight text-white sm:text-6xl">
             {card.keyword}
           </h1>
           {card.hint && (
-            <p className="mt-6 text-balance text-base leading-relaxed text-muted-foreground sm:text-lg">
+            <p className="mt-8 text-balance text-lg leading-relaxed text-white/85 sm:text-xl">
               {card.hint}
             </p>
           )}
@@ -137,7 +137,7 @@ export default function Home() {
         <SwipeHints atTop={index === 0} atBottom={index === total - 1} />
       </div>
 
-      <footer className="pb-[max(1rem,env(safe-area-inset-bottom))] pt-2 text-center text-xs text-muted-foreground/70">
+      <footer className="pb-[max(1rem,env(safe-area-inset-bottom))] pt-2 text-center text-xs text-white/60">
         swipe ↑ next · swipe ↓ previous
       </footer>
     </main>
