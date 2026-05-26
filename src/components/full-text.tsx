@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import {
   Drawer,
   DrawerContent,
@@ -16,7 +17,43 @@ type Props = {
   onOpenChange: (open: boolean) => void;
 };
 
+function buildPlainText(cards: Flashcard[]) {
+  return cards
+    .map((c) => (c.hint ? `${c.keyword}\n\n${c.hint}` : c.keyword))
+    .join("\n\n---\n\n");
+}
+
 export function FullText({ cards, open, onOpenChange }: Props) {
+  const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    if (!copied) return;
+    const t = window.setTimeout(() => setCopied(false), 1500);
+    return () => window.clearTimeout(t);
+  }, [copied]);
+
+  const handleCopy = async () => {
+    const text = buildPlainText(cards);
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+    } catch {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "absolute";
+      ta.style.left = "-9999px";
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand("copy");
+        setCopied(true);
+      } finally {
+        document.body.removeChild(ta);
+      }
+    }
+  };
+
   return (
     <Drawer open={open} onOpenChange={onOpenChange}>
       <DrawerTrigger asChild>
@@ -30,8 +67,16 @@ export function FullText({ cards, open, onOpenChange }: Props) {
         </Button>
       </DrawerTrigger>
       <DrawerContent className="max-h-[85svh]">
-        <DrawerHeader className="pb-2">
+        <DrawerHeader className="flex flex-row items-center justify-between gap-3 pb-2">
           <DrawerTitle className="text-base font-medium">Full text</DrawerTitle>
+          <Button
+            variant="secondary"
+            size="sm"
+            onClick={handleCopy}
+            aria-label="Copy full text to clipboard"
+          >
+            {copied ? "Copied" : "Copy text"}
+          </Button>
         </DrawerHeader>
         <div className="overflow-y-auto px-4 pb-[max(1rem,env(safe-area-inset-bottom))] select-text">
           <article className="mx-auto flex max-w-2xl flex-col gap-6 py-2 leading-relaxed">
