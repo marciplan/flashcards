@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { Flashcard } from "@/lib/cards";
 import { CardIndex } from "@/components/card-index";
+import { FullText } from "@/components/full-text";
 
 const SWIPE_THRESHOLD = 60;
 const SWIPE_TIME_MAX = 600;
@@ -13,6 +14,7 @@ export function Flashcards({ cards }: { cards: Flashcard[] }) {
   const [dragging, setDragging] = useState(false);
   const [transitioning, setTransitioning] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [fullTextOpen, setFullTextOpen] = useState(false);
   const touchStart = useRef<{ y: number; t: number } | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
@@ -38,7 +40,7 @@ export function Flashcards({ cards }: { cards: Flashcard[] }) {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (menuOpen) return;
+      if (menuOpen || fullTextOpen) return;
       if (e.key === "ArrowDown" || e.key === " " || e.key === "PageDown") {
         e.preventDefault();
         next();
@@ -49,7 +51,7 @@ export function Flashcards({ cards }: { cards: Flashcard[] }) {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [next, prev, menuOpen]);
+  }, [next, prev, menuOpen, fullTextOpen]);
 
   const onTouchStart = (e: React.TouchEvent) => {
     if (transitioning) return;
@@ -97,16 +99,23 @@ export function Flashcards({ cards }: { cards: Flashcard[] }) {
           {String(index + 1).padStart(2, "0")}
           <span className="text-white/40"> / {String(total).padStart(2, "0")}</span>
         </span>
-        <CardIndex
-          cards={cards}
-          current={index}
-          onJump={(i) => {
-            goTo(i);
-            setMenuOpen(false);
-          }}
-          open={menuOpen}
-          onOpenChange={setMenuOpen}
-        />
+        <div className="flex items-center gap-1">
+          <FullText
+            cards={cards}
+            open={fullTextOpen}
+            onOpenChange={setFullTextOpen}
+          />
+          <CardIndex
+            cards={cards}
+            current={index}
+            onJump={(i) => {
+              goTo(i);
+              setMenuOpen(false);
+            }}
+            open={menuOpen}
+            onOpenChange={setMenuOpen}
+          />
+        </div>
       </header>
 
       <div className="h-[2px] w-full bg-white/10">
